@@ -43,3 +43,35 @@ ATM_CONTROLLER/
 - **CMakeLists.txt**: Build configuration.
 - **.gitignore**: Git ignore configuration.
 - **README.md**: Guide Document for the project.
+
+
+---
+
+## How to build & Test
+
+### 1. Prerequisites
+
+- Install **GCC 8.XX (MinGW-w64)** and **CMake**.
+- This project was developed in Windows.
+- Ensure both MinGW-w64 and CMake binary directories are added to your system's environment variable (`PATH`).
+
+### 2. Build Instructions
+
+Open a terminal in the project's root directory and execute:
+
+```shell
+mkdir build
+cd build
+cmake ..
+cmake --build . --config Release
+```
+
+### 3. Running Tests
+
+After successful build, you can run tests by executing:
+
+```shell
+cd build
+ctest
+```
+
