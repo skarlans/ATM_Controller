@@ -4,7 +4,7 @@ BankServer::BankServer() {}
 
 bool BankServer::addCustomer(int CardNumber, int pin, const string& AccountName, int initBalance){
 
-    if (database.find(CardNumber) != database.end())
+    if (isRegistered(CardNumber))
         return false;
 
     CustomerData newData;
@@ -18,7 +18,7 @@ bool BankServer::addCustomer(int CardNumber, int pin, const string& AccountName,
 }
 
 bool BankServer::addAccount(int CardNumber, const string& AccountName, int initBalance){
-    if(database.find(CardNumber) == database.end())
+    if(!isRegistered(CardNumber))
         return false;
     
     Account Account(AccountName, initBalance);
@@ -31,7 +31,7 @@ bool BankServer::addAccount(int CardNumber, const string& AccountName, int initB
 }
 
 bool BankServer::validatePIN(int CardNumber, int pin){
-    if(database.find(CardNumber) == database.end())
+    if(!isRegistered(CardNumber))
         return false;
 
     auto it = database.find(CardNumber);
@@ -43,7 +43,7 @@ bool BankServer::validatePIN(int CardNumber, int pin){
 }
 
 bool BankServer::validateAccountName(int CardNumber, const string& AccountName){
-    if(database.find(CardNumber) == database.end())
+    if(!isRegistered(CardNumber))
         return false;
 
     auto it = database.find(CardNumber);
@@ -57,9 +57,9 @@ bool BankServer::validateAccountName(int CardNumber, const string& AccountName){
     return false;
 }
 
-int BankServer::getBalance(int CardNumber, const string& AccountName) const {
+int BankServer::getBalance(int CardNumber, const string& AccountName) {
 
-    if(database.find(CardNumber) == database.end())
+    if(!isRegistered(CardNumber))
         return -1;
     
     for(const auto &acc: database.find(CardNumber)->second.accounts){
@@ -74,7 +74,7 @@ int BankServer::getBalance(int CardNumber, const string& AccountName) const {
 
 bool BankServer::deposit(int CardNumber, const string& AccountName, int amount){
 
-    if(database.find(CardNumber) == database.end())
+    if(!isRegistered(CardNumber))
         return false;
     
     for(auto& account: database.find(CardNumber)->second.accounts){
@@ -88,7 +88,7 @@ bool BankServer::deposit(int CardNumber, const string& AccountName, int amount){
 
 bool BankServer::withdraw(int CardNumber, const string& AccountName, int amount){
 
-    if(database.find(CardNumber) == database.end())
+    if(!isRegistered(CardNumber))
         return false;
     
     for(auto& account: database.find(CardNumber)->second.accounts){
@@ -98,4 +98,8 @@ bool BankServer::withdraw(int CardNumber, const string& AccountName, int amount)
 
     return false;
     
+}
+
+bool BankServer::isRegistered(int CardNumber){
+    return (database.find(CardNumber) == database.end()) ? false : true;
 }

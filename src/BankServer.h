@@ -18,6 +18,9 @@ class BankServer
 {
 private:
     unordered_map<int, CustomerData> database;
+    
+    // isRegistered, if cardnumber is already registered, return false. if not, return true
+    bool isRegistered(int CardNumber);
 
 public:
     // Constructor
@@ -38,13 +41,15 @@ public:
     bool validateAccountName(int CardNumber, const string& AccountName);
 
     // getBalance, if AccountName exist, return (int) balance. if not, return -1
-    int getBalance(int CardNumber, const string &AccountName) const;
+    int getBalance(int CardNumber, const string &AccountName);
 
     // deposit, if AccountName exist, return true. if not, return false
     bool deposit(int CardNumber, const string &AccountName, int amount);
 
-    // deposit, if AccountName exist and possible, return true. if not, return false
+    // withdraw, if AccountName exist and possible, return true. if not, return false
     bool withdraw(int CardNumber, const string &AccountName, int amount);
+
+    
 };
 
 #endif

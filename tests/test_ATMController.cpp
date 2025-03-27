@@ -26,7 +26,7 @@ void TestATMController(){
     assert(ATM.EnterAccountName("TESTING"));
     assert(!ATM.EnterAccountName("TestATM"));
 
-    
+    ATM.EnterPIN(2001);
     ATM.EnterAccountName("TESTING");
     cout << "Test ATMController::CheckBalance" << endl;
     assert(ATM.CheckBalance("TESTING") == 5000);

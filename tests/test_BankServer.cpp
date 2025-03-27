@@ -48,7 +48,7 @@ void TestBankServer(){
     assert(!bank.withdraw(1234, "Testing_Withdraw", 1000));
     assert(!bank.withdraw(5555, "Testing_Another", 3000));
     
-    
+
 
     cout << "BankServer Test Ended" << endl;
 

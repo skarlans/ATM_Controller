@@ -13,8 +13,16 @@ class ATMController
 private:
     BankServer& m_Bank;
     CardReader& m_Hardware;
-    bool m_bAuth;    
+    bool m_bAuth;
+    bool m_bValidPIN;
+    bool m_bValidAccountName;    
     int m_iCurrentCard;
+
+    // isAuth, if cardnumber exists and Authentication done, return true. if not, return false
+    bool isAuth();
+
+    // processAuth, if pin and name is validated, make m_bAuth true. if not, make false
+    void processAuth();
 public:
     // Constructor
     ATMController(BankServer& bank, CardReader& reader);
@@ -39,7 +47,6 @@ public:
 
     // EjectCard(ATMController -> CardReader), eliminate the information of current card
     void EjectCard();
-        
+  
 };
-
 #endif
