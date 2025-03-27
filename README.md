@@ -47,13 +47,18 @@ ATM_CONTROLLER/
 
 ---
 
-## How to build & Test
+## How to Build & Test
 
 ### 1. Prerequisites
 
 - Install **GCC 8.XX (MinGW-w64)** and **CMake**.
 - This project was developed in Windows.
 - Ensure both MinGW-w64 and CMake binary directories are added to your system's environment variable (`PATH`).
+- Clone the repository
+
+```shell
+git clone https://github.com/skarlans/ATM_Controller
+```
 
 ### 2. Build Instructions
 
