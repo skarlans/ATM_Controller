@@ -13,3 +13,18 @@ add_executable(ATMController
     src/ATMController.cpp
     src/BankServer.cpp)
 
+
+add_executable(test_ATM
+    src/Account.cpp
+    src/Hardware.cpp
+    src/ATMController.cpp
+    src/BankServer.cpp
+    tests/test_main.cpp
+    tests/test_Account.cpp
+    tests/test_ATMController.cpp
+    tests/test_BankServer.cpp
+    tests/test_Hardware.cpp)
+
+
+enable_testing()
+add_test(NAME ATM_TEST COMMAND test_ATM)
