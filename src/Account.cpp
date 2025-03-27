@@ -12,11 +12,12 @@ int Account::getAccountBalance() const{
     return m_balance;
 }
 
-void Account::deposit(int amount){
+bool Account::deposit(int amount){
     if (amount < 0)
-        return;
+        return false;
 
     m_balance += amount;
+    return true;
 }
 
 bool Account::withdraw(int amount){

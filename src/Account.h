@@ -21,8 +21,8 @@ public:
     // getter for AccountBalance
     int getAccountBalance() const;
 
-    // Deposit, if amount is below 0, do nothing. Else, add amount to the balance.
-    void deposit(int amount);
+    // Deposit, if amount is below 0, return false. Else, add amount to the balance && return true.
+    bool deposit(int amount);
 
     // Withdraw, if amount is below 0, do nothing. Else, add amount to the balance.
     bool withdraw(int amount);

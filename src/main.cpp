@@ -55,7 +55,7 @@ int main() {
         // Main Interface
         while(isLogin){
             int button;
-            cout <<"1 : Check Balance / 2 : Deposit / 3 : WithDraw / 4 : Eject Card / 0 : Exit" << endl;
+            cout <<"1 : Check Balance / 2 : Deposit / 3 : WithDraw / 4 : Eject Card" << endl;
             cin >> button;
 
             // Check Balance

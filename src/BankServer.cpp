@@ -78,10 +78,8 @@ bool BankServer::deposit(int CardNumber, const string& AccountName, int amount){
         return false;
     
     for(auto& account: database.find(CardNumber)->second.accounts){
-        if(account.getAccountName() == AccountName){
-            account.deposit(amount);
-            return true;
-        }
+        if(account.getAccountName() == AccountName)
+            return account.deposit(amount);;
     }
 
     return false;
